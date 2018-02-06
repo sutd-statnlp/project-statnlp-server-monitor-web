@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="block-header row">
         <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
-            <button ng-click="vm.refresh()" type="button" class="btn btn-primary btn-circle-lg waves-effect waves-circle waves-float">
+            <button ng-disabled="vm.isAutoRefresh" ng-click="vm.refresh()" type="button" class="btn btn-primary btn-circle-lg waves-effect waves-circle waves-float">
                 <i class="material-icons">refresh</i>
             </button>
         </div>
