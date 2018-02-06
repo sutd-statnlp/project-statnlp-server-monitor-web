@@ -19,12 +19,12 @@
                 usedPercent: 0
             }
         };
-        vm.disk = {
-            used: 0
-        };
-
+    
         vm.load = {
-            average: 0
+            average: 0,
+            misc: {
+                procsRunning: 0
+            }
         };
 
         vm.refresh = refresh;
@@ -64,8 +64,8 @@
         function loadAll() {
             loadCpu();
             loadMemory();
-            loadDisk();
             loadAverage();
+            loadMisc();
         }
 
         function loadCpu() {
@@ -87,19 +87,19 @@
             }
         }
 
-        function loadDisk() {
-            DiskService.getUsage({}, onSuccess, onError);
-
-            function onSuccess(data) {
-                vm.disk.used = data.used;
-            }
-        }
-
         function loadAverage() {
             LoadService.getAverage({}, onSuccess, onError);
 
             function onSuccess(data) {
                 vm.load.average = data.load1;
+            }
+        }
+
+        function loadMisc() {
+            LoadService.getMisc({}, onSuccess, onError);
+
+            function onSuccess(data) {
+                vm.load.misc.procsRunning = data.procsRunning;
             }
         }
 
