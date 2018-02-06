@@ -8,7 +8,7 @@
             'ui.router',
             'angular-loading-bar',
             'oc.lazyLoad',
-            'angular-filters'
+            'angular.filter'
         ])
         .run(run);
 

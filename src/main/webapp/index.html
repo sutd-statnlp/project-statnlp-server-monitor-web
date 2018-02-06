@@ -16,9 +16,7 @@
     <!-- endinject -->
     <link rel="stylesheet" href="content/css/vendor.css">
     <!-- endbuild -->
-    <!-- build:css content/css/main.css -->
-    <link rel="stylesheet" href="content/css/main.css">
-    <!-- endbuild -->
+   
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="manifest" href="manifest.webapp" />
 
@@ -43,6 +41,10 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.min.css" rel="stylesheet" />
+
+     <!-- build:css content/css/main.css -->
+     <link rel="stylesheet" href="content/css/main.css">
+     <!-- endbuild -->
 </head>
 
 <body class="theme-blue" ng-app="statnlpApp" ng-strict-di>
@@ -132,8 +134,7 @@
     <script src="bower_components/json3/lib/json3.js"></script>
     <script src="bower_components/messageformat/messageformat.js"></script>
     <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
-    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
-    <script src="bower_components/ng-filters/dist/ng-filters.js"></script>
+    <script src="bower_components/angular-filter/dist/angular-filter.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
 
@@ -142,6 +143,8 @@
     <!-- inject:js -->
     <script src="app/app.module.js"></script>
     <script src="app/service/memory.service.js"></script>
+    <script src="app/service/load.service.js"></script>
+    <script src="app/service/disk.service.js"></script>
     <script src="app/service/data.service.js"></script>
     <script src="app/service/cpu.service.js"></script>
     <script src="app/layouts/sidenav/sidenav.controller.js"></script>

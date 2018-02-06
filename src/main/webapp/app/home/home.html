@@ -1,6 +1,19 @@
 <div class="container-fluid">
-    <div class="block-header">
-        <h2>DASHBOARD</h2>
+    <div class="block-header row">
+        <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+            <button ng-click="vm.refresh()" type="button" class="btn btn-primary btn-circle-lg waves-effect waves-circle waves-float">
+                <i class="material-icons">refresh</i>
+            </button>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6 text-right">
+            <div class="demo-switch-title">AUTO REFRESH</div>
+            <div class="switch">
+                <label>
+                    <input type="checkbox" ng-model="vm.isAutoRefresh" ng-change="vm.autoRefresh()">
+                    <span class="lever switch-col-blue"></span>
+                </label>
+            </div>
+        </div>
     </div>
 
     <!-- Widgets -->
@@ -8,7 +21,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="info-box hover-zoom-effect">
                 <div class="icon bg-blue">
-                    <i class="material-icons">devices</i>
+                    <i class="material-icons">developer_board</i>
                 </div>
                 <div class="content">
                     <div class="text">CPU USAGE</div>
@@ -19,16 +32,71 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="info-box hover-zoom-effect">
                 <div class="icon bg-blue">
-                    <i class="material-icons">devices</i>
+                    <i class="material-icons">memory</i>
                 </div>
                 <div class="content">
                     <div class="text">MEMORY USAGE</div>
-                    <div class="number">{{vm.memory.virtual.used | bytes}}</div>
+                    <div class="number">{{vm.memory.virtual.used | byteFmt : 2}}</div>
                 </div>
             </div>
         </div>
-        
-    </div>
-   
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">power_input</i>
+                </div>
+                <div class="content">
+                    <div class="text">LOAD ONE</div>
+                    <div class="number">{{vm.load.average}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">storage</i>
+                </div>
+                <div class="content">
+                    <div class="text">DISK USAGE</div>
+                    <div class="number">{{vm.disk.used | byteFmt : 0}}</div>
+                </div>
+            </div>
+        </div>
 
+    </div>
+
+  <!-- CPU Usage -->
+  <div class="row clearfix">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-6">
+                            <h2>CPU USAGE (%)</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="body">
+                    <div id="cpu-chart" class="dashboard-flot-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Memory Usage -->
+  <div class="row clearfix">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-6">
+                            <h2>Memory USAGE (%)</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="body">
+                    <div id="memory-chart" class="dashboard-flot-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

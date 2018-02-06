@@ -34,8 +34,8 @@ module.exports = function (config) {
             'src/main/webapp/bower_components/json3/lib/json3.js',
             'src/main/webapp/bower_components/messageformat/messageformat.js',
             'src/main/webapp/bower_components/oclazyload/dist/ocLazyLoad.js',
+            'src/main/webapp/bower_components/angular-filter/dist/angular-filter.js',
             'src/main/webapp/bower_components/angular-mocks/angular-mocks.js',
-            'src/main/webapp/bower_components/ng-filters/dist/ng-filters.js',
             // endbower
             'src/main/webapp/app/app.module.js',
             'src/main/webapp/app/app.state.js',
