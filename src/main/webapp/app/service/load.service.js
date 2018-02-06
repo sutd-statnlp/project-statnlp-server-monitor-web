@@ -10,7 +10,8 @@
 
         var endPoint = DataService.getEndpoint();
         return $resource('', {}, {
-            'getAverage': { method: 'GET', url: endPoint + '/api/load/average' }
+            'getAverage': { method: 'GET', url: endPoint + '/api/load/average' },
+            'getMisc': { method: 'GET', url: endPoint + '/api/load/misc' }
         });
 
     }
