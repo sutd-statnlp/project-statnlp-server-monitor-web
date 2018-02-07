@@ -4,15 +4,35 @@
         .module('statnlpApp')
         .factory('MemoryService', MemoryService);
 
-    MemoryService.$inject = ['$resource','DataService'];
+    MemoryService.$inject = ['$resource', 'DataService'];
 
-    function MemoryService($resource,DataService) {
+    function MemoryService($resource, DataService) {
+      
+        var service = {
+            getVirtual: getVirtual,
+            getSwap: getSwap
+        };
+        return service;
 
-        var endPoint = DataService.getEndpoint();
-        return $resource('', {}, {
-            'getVirtual': { method: 'GET', url: endPoint + '/api/mem/virtual' },
-            'getSwap': { method: 'GET', url: endPoint + '/api/mem/swap' }
-        });
+        function getVirtual() {
+            var resource = $resource('', {}, {
+                'get': {
+                    method: 'GET',
+                    url: DataService.getEndpoint() + '/api/mem/virtual'
+                }
+            });
+            return resource;
+        }
+
+        function getSwap() {
+            var resource = $resource('', {}, {
+                'get': {
+                    method: 'GET',
+                    url: DataService.getEndpoint() + '/api/mem/swap'
+                }
+            });
+            return resource;
+        }
 
     }
 })();

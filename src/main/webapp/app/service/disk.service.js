@@ -4,14 +4,26 @@
         .module('statnlpApp')
         .factory('DiskService', DiskService);
 
-    DiskService.$inject = ['$resource','DataService'];
+    DiskService.$inject = ['$resource', 'DataService'];
 
-    function DiskService($resource,DataService) {
+    function DiskService($resource, DataService) {
 
-        var endPoint = DataService.getEndpoint();
-        return $resource('', {}, {
-            'getUsage': { method: 'GET', url: endPoint + '/api/disk/usage' }
-        });
+        var service = {
+            getUsage: getUsage
+        };
+        return service;
+
+        function getUsage() {
+            var resource = $resource('', {}, {
+                'get': {
+                    method: 'GET',
+                    isArray: true,
+                    url: DataService.getEndpoint() + '/api/disk/usage'
+                }
+            });
+            return resource;
+        }
+
 
     }
 })();

@@ -4,15 +4,38 @@
         .module('statnlpApp')
         .factory('CpuService', CpuService);
 
-    CpuService.$inject = ['$resource','DataService'];
+    CpuService.$inject = ['$resource', 'DataService'];
 
-    function CpuService($resource,DataService) {
+    function CpuService($resource, DataService) {
 
-        var endPoint = DataService.getEndpoint();
-        return $resource('', {}, {
-            'getSumPercent': { method: 'GET', isArray: true, url: endPoint + '/api/cpu/sum/percent' },
-            'getSumTime': { method: 'GET', isArray: true, url: endPoint + '/api/cpu/sum/time' }
-        });
+        var service = {
+            getSumPercent: getSumPercent,
+            getSumTime: getSumTime
+        };
+
+        function getSumPercent() {
+            var resource = $resource('', {}, {
+                'get': {
+                    method: 'GET',
+                    isArray: true,
+                    url: DataService.getEndpoint() + '/api/cpu/sum/percent'
+                }
+            });
+            return resource;
+        }
+
+        function getSumTime(params) {
+            var resource = $resource('', {}, {
+                'get': {
+                    method: 'GET',
+                    isArray: true,
+                    url: DataService.getEndpoint() + '/api/cpu/sum/time'
+                }
+            });
+            return resource;
+        }
+
+        return service;
 
     }
 })();

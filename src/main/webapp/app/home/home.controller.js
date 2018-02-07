@@ -5,10 +5,11 @@
         .module('statnlpApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', '$state', '$ocLazyLoad', 'CpuService', 'MemoryService', 'DiskService', 'LoadService', '$interval'];
+    HomeController.$inject = ['$scope', '$state', '$ocLazyLoad', 'CpuService', 'MemoryService', 'DiskService', 'LoadService', '$interval', 'DataService'];
 
-    function HomeController($scope, $state, $ocLazyLoad, CpuService, MemoryService, DiskService, LoadService, $interval) {
+    function HomeController($scope, $state, $ocLazyLoad, CpuService, MemoryService, DiskService, LoadService, $interval, DataService) {
         $ocLazyLoad.load("js/pages/index.js");
+
         var vm = this;
         vm.cpu = {
             percent: 0
@@ -19,14 +20,12 @@
                 usedPercent: 0
             }
         };
-    
         vm.load = {
             average: 0,
             misc: {
                 procsRunning: 0
             }
         };
-
         vm.refresh = refresh;
         vm.isAutoRefresh = false;
         vm.autoRefresh = autoRefresh;
@@ -41,12 +40,52 @@
             data: []
         };
 
-        loadAll();
-        initCpuChart();
-        initMemoryChart();
+        loadDefault(false);
+
+        DataService.subscribe($scope, function ipChange() {
+            loadDefault(true);
+        });
+
+        function loadDefault(isAttempted) {
+            vm.cpu = {
+                percent: 0
+            };
+            vm.memory = {
+                virtual: {
+                    used: 0,
+                    usedPercent: 0
+                }
+            };
+            vm.load = {
+                average: 0,
+                misc: {
+                    procsRunning: 0
+                }
+            };
+
+            vm.isAutoRefresh = false;
+            refreshInterval = null;
+
+            cpuChart = {
+                plot: null,
+                data: []
+            };
+
+            memoryChart = {
+                plot: null,
+                data: []
+            };
+
+            if (!loadAll() && isAttempted)
+                $('#btn-noti-error').click();
+
+            initCpuChart();
+            initMemoryChart();
+        }
 
         function refresh() {
-            loadAll();
+            if (!loadAll())
+                $('#btn-noti-error').click();
         }
 
         function autoRefresh() {
@@ -62,33 +101,37 @@
         }
 
         function loadAll() {
-            loadCpu();
-            loadMemory();
-            loadAverage();
-            loadMisc();
+            if (DataService.getIpItem().status) {
+                loadCpu();
+                loadMemory();
+                loadAverage();
+                loadMisc();
+                return true;
+            }
+            return false;
         }
 
         function loadCpu() {
-            CpuService.getSumPercent({}, onSuccess, onError);
+            CpuService.getSumPercent().get(onSuccess, onError);
 
             function onSuccess(data) {
                 vm.cpu.percent = data[0];
-                updateChart(data[0],cpuChart);
+                updateChart(data[0], cpuChart);
             }
         }
 
         function loadMemory() {
-            MemoryService.getVirtual({}, onSuccess, onError);
+            MemoryService.getVirtual().get(onSuccess, onError);
 
             function onSuccess(data) {
                 vm.memory.virtual.used = data.used;
                 vm.memory.virtual.usedPercent = data.usedPercent;
-                updateChart(data.usedPercent,memoryChart);
+                updateChart(data.usedPercent, memoryChart);
             }
         }
 
         function loadAverage() {
-            LoadService.getAverage({}, onSuccess, onError);
+            LoadService.getAverage().get(onSuccess, onError);
 
             function onSuccess(data) {
                 vm.load.average = data.load1;
@@ -96,7 +139,7 @@
         }
 
         function loadMisc() {
-            LoadService.getMisc({}, onSuccess, onError);
+            LoadService.getMisc().get(onSuccess, onError);
 
             function onSuccess(data) {
                 vm.load.misc.procsRunning = data.procsRunning;
@@ -107,10 +150,10 @@
             console.log(error);
         }
 
-        function updateChart(item,chart) {
+        function updateChart(item, chart) {
+            chart.data.push(item);
             var dataLength = chart.data.length;
             if (dataLength > 100) chart.data = chart.data.slice(1);
-            chart.data.push(item);
             var res = [];
             for (var i = 0; i < dataLength; ++i) {
                 res.push([i, chart.data[i]]);
