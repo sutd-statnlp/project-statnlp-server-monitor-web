@@ -63,9 +63,6 @@
                 }
             };
 
-            vm.isAutoRefresh = false;
-            refreshInterval = null;
-
             cpuChart = {
                 plot: null,
                 data: []
