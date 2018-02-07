@@ -23,20 +23,20 @@ const fileManifest = [
     "revision": "6f2c6888e9f517bf8389b3622a5fcea7"
   },
   {
-    "url": "app/app-ca73697b28.js",
-    "revision": "ca73697b28d594b24e50d04b6f97366c"
+    "url": "app/app-95afdc84b6.js",
+    "revision": "95afdc84b6706965b238b5ef11ab3721"
   },
   {
-    "url": "app/vendor-08ba6ce6aa.js",
-    "revision": "08ba6ce6aa511e93ae67cba2ce7de88b"
+    "url": "app/vendor-b965b05270.js",
+    "revision": "b965b052707b6a6be505fc7c6153ef6d"
   },
   {
-    "url": "content/css/main-07a2ff4a1f.css",
-    "revision": "07a2ff4a1f2c6a04bcdc64bd652e0d54"
+    "url": "content/css/main-5e3a9342b6.css",
+    "revision": "5e3a9342b61be0fd09cbbaedf2a92cc2"
   },
   {
-    "url": "content/css/vendor-f05d0565f7.css",
-    "revision": "f05d0565f71f51dd1862a36ac9c85b67"
+    "url": "content/css/vendor-d41d8cd98f.css",
+    "revision": "d41d8cd98f00b204e9800998ecf8427e"
   },
   {
     "url": "content/fonts/fontawesome-webfont-912ec66d75.svg",
@@ -64,7 +64,7 @@ const fileManifest = [
   },
   {
     "url": "index.html",
-    "revision": "8489aba5feb0b11b7f266cc3562cd609"
+    "revision": "653f8ebf296c43349086c8c0bb40ceef"
   },
   {
     "url": "plugins/ckeditor/plugins/preview/preview.html",
