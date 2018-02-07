@@ -11,7 +11,7 @@
 node_tmp/
 node_modules/
 npm-debug.log.*
-bower_components/
+bower_components
 
 ######################
 # SASS
