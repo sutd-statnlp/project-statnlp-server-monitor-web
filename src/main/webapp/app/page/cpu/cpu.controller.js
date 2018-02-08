@@ -10,6 +10,7 @@
     function CpuController($scope, $state, $ocLazyLoad, CpuService, $interval, DataService) {
 
         var vm = this;
+        vm.hasTable = false;
         vm.refresh = refresh;
         vm.cpu = {
             sumPercent: 0,
@@ -34,7 +35,22 @@
         });
 
         function loadDefault(isAttempted) {
-
+            vm.cpu = {
+                sumPercent: 0,
+                sumTime: {
+                    user: 0,
+                    system: 0,
+                    idle: 0,
+                    nice: 0,
+                    iowait: 0,
+                    softirq: 0
+                },
+                count: 0,
+                info: [],
+                percent: [],
+                time: []
+            };
+            vm.hasTable = false;
             if (!loadAll() && isAttempted)
                 $('#btn-noti-error').click();
         }
@@ -46,7 +62,8 @@
                 loadCpuSumTime();
                 loadCpuInfo();
                 return true;
-            }
+            } else
+                vm.hasTable = false;
             return false;
         }
 
@@ -105,16 +122,22 @@
             function onSuccess(data) {
                 vm.cpu.percent = data;
 
-                //Exportable table
-                $('.js-exportable').DataTable({
-                    dom: 'Bfrtip',
-                    responsive: true,
-                    buttons: [
-                        'copy', 'csv', 'excel', 'pdf', 'print'
-                    ],
-                    "bDestroy": true
-                });
+                createTable();
             }
+
+        }
+
+        function createTable() {
+            //Exportable table
+            $('.js-exportable').DataTable({
+                dom: 'Bfrtip',
+                responsive: true,
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                "bDestroy": true
+            });
+            vm.hasTable = true;
         }
 
         function onError(error) {
