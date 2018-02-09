@@ -15,8 +15,8 @@
                     <i class="material-icons">view_module</i>
                 </div>
                 <div class="content">
-                    <div class="text">CPU COUNT</div>
-                    <div class="number">{{vm.cpu.count}}</div>
+                    <div class="text">UPTIME</div>
+                    <div class="number">{{vm.host.info.uptime}}</div>
                 </div>
             </div>
         </div>
@@ -26,8 +26,8 @@
                     <i class="material-icons">developer_board</i>
                 </div>
                 <div class="content">
-                    <div class="text">CPU USAGE</div>
-                    <div class="number">{{vm.cpu.sumPercent | number: 2}} %</div>
+                    <div class="text">BOOT TIME</div>
+                    <div class="number">{{vm.host.info.bootTime}}</div>
                 </div>
             </div>
         </div>
@@ -37,8 +37,8 @@
                     <i class="material-icons">account_box</i>
                 </div>
                 <div class="content">
-                    <div class="text">CPU USER</div>
-                    <div class="number">{{vm.cpu.sumTime.user | number: 2}} h</div>
+                    <div class="text">PROCESSES</div>
+                    <div class="number">{{vm.host.info.procs}}</div>
                 </div>
             </div>
         </div>
@@ -49,8 +49,8 @@
                     <i class="material-icons">brightness_high</i>
                 </div>
                 <div class="content">
-                    <div class="text">CPU SYSTEM</div>
-                    <div class="number">{{vm.cpu.sumTime.system | number: 2}} h</div>
+                    <div class="text">OS</div>
+                    <div class="number">{{vm.host.info.os}}</div>
                 </div>
             </div>
         </div>
@@ -61,8 +61,8 @@
                     <i class="material-icons">view_column</i>
                 </div>
                 <div class="content">
-                    <div class="text">CPU IDLE</div>
-                    <div class="number">{{vm.cpu.sumTime.idle | number: 2}} h</div>
+                    <div class="text">PLATFORM</div>
+                    <div class="number">{{vm.host.info.platform}}</div>
                 </div>
             </div>
         </div>
@@ -73,8 +73,8 @@
                     <i class="material-icons">vertical_align_top</i>
                 </div>
                 <div class="content">
-                    <div class="text">CPU NICE</div>
-                    <div class="number">{{vm.cpu.sumTime.nice | number: 2}} s</div>
+                    <div class="text">PLAT FAMILY</div>
+                    <div class="number">{{vm.host.info.platformFamily}}</div>
                 </div>
             </div>
         </div>
@@ -84,8 +84,8 @@
                     <i class="material-icons">hourglass_empty</i>
                 </div>
                 <div class="content">
-                    <div class="text">CPU IOWAIT</div>
-                    <div class="number">{{vm.cpu.sumTime.iowait | number: 2}} s</div>
+                    <div class="text">PLAT VERSION</div>
+                    <div class="number">{{vm.host.info.platformVersion}}</div>
                 </div>
             </div>
         </div>
@@ -95,21 +95,21 @@
                     <i class="material-icons">shuffle</i>
                 </div>
                 <div class="content">
-                    <div class="text">CPU SOFTIRQ</div>
-                    <div class="number">{{vm.cpu.sumTime.softirq | number: 2}} s</div>
+                    <div class="text">KERNEL VERSION</div>
+                    <div class="number">{{vm.host.info.kernelVersion | limitTo: 5}}</div>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <!-- Info detail -->
-    <div class="row clearfix">
+   
+    <!-- <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
                     <h2>
-                        CPU DETAILS
+                        HOST SENSOR TEMPERATURE DETAILS
                     </h2>
                 </div>
                 <div class="body" ng-show="vm.hasTable">
@@ -117,23 +117,16 @@
                         <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Model Name</th>
-                                    <th>Vendor</th>
-                                    <th>MHZ</th>
-                                    <th>Cache Size</th>
-                                    <th>Percent Usage</th>
+                                    <th>#</th>
+                                    <th>Sensor Key</th>
+                                    <th>Sensor Temperature</th>
                                 </tr>
                             </thead>
-                          
                             <tbody>
-                                <tr ng-repeat="item in vm.cpu.info">
-                                    <td>{{item.cpu}}</td>
-                                    <td>{{item.modelName}}</td>
-                                    <td>{{item.vendorId}}</td>
-                                    <td>{{item.mhz}}</td>
-                                    <td>{{item.cacheSize}}</td>
-                                    <td>{{vm.cpu.percent[$index] | number : 2}}</td>
+                                <tr ng-repeat="item in vm.host.temperature">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.sensorKey}}</td>
+                                    <td>{{item.sensorTemperature}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -141,5 +134,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

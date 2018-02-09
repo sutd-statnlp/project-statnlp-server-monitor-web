@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -13,7 +13,9 @@
             convertDateTimeFromServer: convertDateTimeFromServer,
             convertLocalDateFromServer: convertLocalDateFromServer,
             convertLocalDateToServer: convertLocalDateToServer,
-            dateformat: dateformat
+            dateformat: dateformat,
+            unixTimeToDateString: unixTimeToDateString,
+            secondsToTime: secondsToTime
         };
 
         return service;
@@ -36,7 +38,7 @@
 
         function convertLocalDateToServer(date) {
             if (date) {
-                return $filter('date')(date, 'yyyy-MM-dd');
+                return $filter('date')(date, 'dd/MM/yy');
             } else {
                 return null;
             }
@@ -44,6 +46,21 @@
 
         function dateformat() {
             return 'yyyy-MM-dd';
+        }
+
+        function unixTimeToDateString(unixTime) {
+            return convertLocalDateToServer(new Date(unixTime * 1000));
+        }
+
+        function secondsToTime(seconds) {
+            seconds = parseInt(seconds, 10);
+            var days = Math.floor(seconds / (3600 * 24));
+            seconds -= days * 3600 * 24;
+            var hrs = Math.floor(seconds / 3600);
+            seconds -= hrs * 3600;
+            var mnts = Math.floor(seconds / 60);
+            seconds -= mnts * 60;
+            return days + "d " + hrs + "h";
         }
     }
 

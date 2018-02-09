@@ -1,0 +1,106 @@
+<div class="container-fluid">
+    <div class="block-header row">
+        <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+            <button ng-disabled="vm.isAutoRefresh" ng-click="vm.refresh()" type="button" class="btn btn-primary btn-circle-lg waves-effect waves-circle waves-float">
+                <i class="material-icons">refresh</i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Summary info -->
+    <div class="row clearfix">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">view_module</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL</div>
+                    <div class="number">{{vm.disk.usage.total | byteFmt: 0}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">developer_board</i>
+                </div>
+                <div class="content">
+                    <div class="text">FREE</div>
+                    <div class="number">{{vm.disk.usage.free | byteFmt: 0}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">account_box</i>
+                </div>
+                <div class="content">
+                    <div class="text">USED</div>
+                    <div class="number">{{vm.disk.usage.used | byteFmt: 0}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">brightness_high</i>
+                </div>
+                <div class="content">
+                    <div class="text">USED PERCENT</div>
+                    <div class="number">{{vm.disk.usage.usedPercent | number: 0}} %</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">view_column</i>
+                </div>
+                <div class="content">
+                    <div class="text">INODES TOTAL</div>
+                    <div class="number">{{vm.disk.usage.inodesTotal}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">vertical_align_top</i>
+                </div>
+                <div class="content">
+                    <div class="text">INODES USED</div>
+                    <div class="number">{{vm.disk.usage.inodesUsed}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">vertical_align_top</i>
+                </div>
+                <div class="content">
+                    <div class="text">INODES FREE</div>
+                    <div class="number">{{vm.disk.usage.inodesFree}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">vertical_align_top</i>
+                </div>
+                <div class="content">
+                    <div class="text">INODES USED</div>
+                    <div class="number">{{vm.disk.usage.inodesUsedPercent | number : 0}} % </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

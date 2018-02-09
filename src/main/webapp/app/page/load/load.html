@@ -1,0 +1,93 @@
+<div class="container-fluid">
+    <div class="block-header row">
+        <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+            <button ng-disabled="vm.isAutoRefresh" ng-click="vm.refresh()" type="button" class="btn btn-primary btn-circle-lg waves-effect waves-circle waves-float">
+                <i class="material-icons">refresh</i>
+            </button>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6 text-right">
+                <div class="demo-switch-title">AUTO REFRESH</div>
+                <div class="switch">
+                    <label>
+                        <input type="checkbox" ng-model="vm.isAutoRefresh" ng-change="vm.autoRefresh()">
+                        <span class="lever switch-col-blue"></span>
+                    </label>
+                </div>
+            </div>
+    </div>
+
+    <!-- Summary info -->
+    <div class="row clearfix">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">view_module</i>
+                </div>
+                <div class="content">
+                    <div class="text">Load 1</div>
+                    <div class="number">{{vm.load.average.load1}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">developer_board</i>
+                </div>
+                <div class="content">
+                    <div class="text">Load 5</div>
+                    <div class="number">{{vm.load.average.load5}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">account_box</i>
+                </div>
+                <div class="content">
+                    <div class="text">Load 15</div>
+                    <div class="number">{{vm.load.average.load15}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">brightness_high</i>
+                </div>
+                <div class="content">
+                    <div class="text">MISC RUNNING</div>
+                    <div class="number">{{vm.load.misc.procsRunning}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">view_column</i>
+                </div>
+                <div class="content">
+                    <div class="text">MISC BLOCKED</div>
+                    <div class="number">{{vm.load.misc.procsBlocked}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="info-box hover-zoom-effect">
+                <div class="icon bg-blue">
+                    <i class="material-icons">vertical_align_top</i>
+                </div>
+                <div class="content">
+                    <div class="text">MISC CTXT Context Switches</div>
+                    <div class="number">{{vm.load.misc.ctxt}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

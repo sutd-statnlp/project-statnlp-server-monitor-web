@@ -16,7 +16,7 @@
                 </div>
                 <div class="content">
                     <div class="text">MEMORY TOTAL</div>
-                    <div class="number">{{vm.memory.virtual.total | kbFmt: 0}}</div>
+                    <div class="number">{{vm.memory.virtual.total | byteFmt: 0}}</div>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="content">
                     <div class="text">AVAILABE</div>
-                    <div class="number">{{vm.memory.virtual.available | kbFmt: 0}}</div>
+                    <div class="number">{{vm.memory.virtual.available | byteFmt: 0}}</div>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="content">
                     <div class="text">USAGE</div>
-                    <div class="number">{{vm.memory.virtual.used | kbFmt: 0}}</div>
+                    <div class="number">{{vm.memory.virtual.used | byteFmt: 0}}</div>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="content">
                     <div class="text">FREE & ACTIVE</div>
-                    <div class="number">{{vm.memory.virtual.free | kbFmt: 0}}</div>
+                    <div class="number">{{vm.memory.virtual.free | byteFmt: 0}}</div>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="content">
                     <div class="text">BUFFERS</div>
-                    <div class="number">{{vm.memory.virtual.buffers | kbFmt: 0}}</div>
+                    <div class="number">{{vm.memory.virtual.buffers | byteFmt: 0}}</div>
                 </div>
             </div>
         </div>
@@ -85,7 +85,7 @@
                 </div>
                 <div class="content">
                     <div class="text">CACHED</div>
-                    <div class="number">{{vm.memory.virtual.cached | kbFmt: 0}}</div>
+                    <div class="number">{{vm.memory.virtual.cached | byteFmt: 0}}</div>
                 </div>
             </div>
         </div>
@@ -96,7 +96,7 @@
                 </div>
                 <div class="content">
                     <div class="text">INACTIVE</div>
-                    <div class="number">{{vm.memory.virtual.inactive | kbFmt: 0}}</div>
+                    <div class="number">{{vm.memory.virtual.inactive | byteFmt: 0}}</div>
                 </div>
             </div>
         </div>
@@ -112,27 +112,27 @@
                     <ul class="dashboard-stat-list">
                         <li>
                             Dirty
-                            <span class="pull-right"><b>{{vm.memory.virtual.dirty | kbFmt: 0}}</b></span>
+                            <span class="pull-right"><b>{{vm.memory.virtual.dirty | byteFmt: 0}}</b></span>
                         </li>
                         <li>
                             Writebacktmp
-                            <span class="pull-right"><b>{{vm.memory.virtual.writebacktmp| kbFmt: 0}}</b></span>
+                            <span class="pull-right"><b>{{vm.memory.virtual.writebacktmp| byteFmt: 0}}</b></span>
                         </li>
                         <li>
                             Shared
-                            <span class="pull-right"><b>{{vm.memory.virtual.shared | kbFmt: 0}}</b></span>
+                            <span class="pull-right"><b>{{vm.memory.virtual.shared | byteFmt: 0}}</b></span>
                         </li>
                         <li>
                             Slab
-                            <span class="pull-right"><b>{{vm.memory.virtual.slab | kbFmt: 0}}</b></span>
+                            <span class="pull-right"><b>{{vm.memory.virtual.slab | byteFmt: 0}}</b></span>
                         </li>
                         <li>
                             Pagetables
-                            <span class="pull-right"><b>{{vm.memory.virtual.pagetables | kbFmt: 0}}</b></span>
+                            <span class="pull-right"><b>{{vm.memory.virtual.pagetables | byteFmt: 0}}</b></span>
                         </li>
                         <li>
                             Swapcached
-                            <span class="pull-right"><b>{{vm.memory.virtual.swapcached | kbFmt: 0}}</b></span>
+                            <span class="pull-right"><b>{{vm.memory.virtual.swapcached | byteFmt: 0}}</b></span>
                         </li>
                     </ul>
                 </div>
@@ -145,15 +145,15 @@
                     <ul class="dashboard-stat-list">
                         <li>
                             Total
-                            <span class="pull-right"><b>{{vm.memory.swap.total | kbFmt: 0}}</b></span>
+                            <span class="pull-right"><b>{{vm.memory.swap.total | byteFmt: 0}}</b></span>
                         </li>
                         <li>
                             Usage
-                            <span class="pull-right"><b>{{vm.memory.swap.used| kbFmt: 0}}</b></span>
+                            <span class="pull-right"><b>{{vm.memory.swap.used| byteFmt: 0}}</b></span>
                         </li>
                         <li>
                             Free
-                            <span class="pull-right"><b>{{vm.memory.swap.free | kbFmt: 0}}</b></span>
+                            <span class="pull-right"><b>{{vm.memory.swap.free | byteFmt: 0}}</b></span>
                         </li>
                         <li>
                             Usage percent
@@ -161,11 +161,11 @@
                         </li>
                         <li>
                             SIN
-                            <span class="pull-right"><b>{{vm.memory.swap.sin | kbFmt: 0}}</b></span>
+                            <span class="pull-right"><b>{{vm.memory.swap.sin | byteFmt: 0}}</b></span>
                         </li>
                         <li>
                             SOUT
-                            <span class="pull-right"><b>{{vm.memory.swap.sout | kbFmt: 0}}</b></span>
+                            <span class="pull-right"><b>{{vm.memory.swap.sout | byteFmt: 0}}</b></span>
                         </li>
                     </ul>
                 </div>

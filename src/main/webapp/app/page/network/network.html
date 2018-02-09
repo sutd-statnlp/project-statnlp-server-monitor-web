@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="block-header row">
+        <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+            <button ng-disabled="vm.isAutoRefresh" ng-click="vm.refresh()" type="button" class="btn btn-primary btn-circle-lg waves-effect waves-circle waves-float">
+                <i class="material-icons">refresh</i>
+            </button>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        NETWORK INTERFACES
+                    </h2>
+                </div>
+                <div class="body table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>MTU</th>
+                                <th>Name</th>
+                                <th>Hardware Address</th>
+                                <th>Flags</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                      <tbody>
+                          <tr ng-repeat="item in vm.network.interface">
+                             <td>{{$index}}</td> 
+                             <td>{{item.mtu}}</td>
+                             <td>{{item.name}}</td>
+                             <td>{{item.hardwareaddr}}</td>
+                             <td>
+                                 <span class="label bg-blue" ng-repeat="flag in item.flags">{{flag}}</span>
+                             </td>
+                             <td>
+                                    <span class="label bg-blue" ng-repeat="address in item.addrs">{{address.addr}}</span>
+                             </td>
+                          </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

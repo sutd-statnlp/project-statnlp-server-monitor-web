@@ -17,7 +17,6 @@
             var resource = $resource('', {}, {
                 'get': {
                     method: 'GET',
-                    isArray: true,
                     url: DataService.getEndpoint() + '/api/disk/usage'
                 }
             });

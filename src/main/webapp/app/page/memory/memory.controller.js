@@ -107,19 +107,6 @@
             }
         }
 
-        function createTable() {
-            //Exportable table
-            $('.js-exportable').DataTable({
-                dom: 'Bfrtip',
-                responsive: true,
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ],
-                "bDestroy": true
-            });
-            vm.hasTable = true;
-        }
-
         function onError(error) {
             console.log(error);
         }

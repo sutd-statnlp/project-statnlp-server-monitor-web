@@ -5,12 +5,13 @@
         .module('statnlpApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', '$state', '$ocLazyLoad', 'CpuService', 'MemoryService', 'DiskService', 'LoadService', '$interval', 'DataService'];
+    HomeController.$inject = ['$scope', '$state', '$window', '$ocLazyLoad', 'CpuService', 'MemoryService', 'DiskService', 'LoadService', '$interval', 'DataService'];
 
-    function HomeController($scope, $state, $ocLazyLoad, CpuService, MemoryService, DiskService, LoadService, $interval, DataService) {
+    function HomeController($scope, $state, $window, $ocLazyLoad, CpuService, MemoryService, DiskService, LoadService, $interval, DataService) {
         $ocLazyLoad.load("js/pages/index.js");
 
         var vm = this;
+
         vm.cpu = {
             percent: 0
         };
@@ -26,6 +27,7 @@
                 procsRunning: 0
             }
         };
+
         vm.refresh = refresh;
         vm.isAutoRefresh = false;
         vm.autoRefresh = autoRefresh;
@@ -76,9 +78,16 @@
             if (!loadAll() && isAttempted)
                 $('#btn-noti-error').click();
 
+            if ($window.innerWidth <= 440) {
+                $("#cpu-chart").css("width", "260");
+                $("#memory-chart").css("width", "260");
+            }
+
             initCpuChart();
             initMemoryChart();
         }
+
+       
 
         function refresh() {
             if (!loadAll())
@@ -160,6 +169,7 @@
         }
 
         function initCpuChart() {
+
             cpuChart.plot = $.plot('#cpu-chart', [cpuChart.data], {
                 series: {
                     shadowSize: 0,
@@ -210,6 +220,13 @@
             });
 
         }
+
+        $(window).resize(function(){
+            if ($window.innerWidth > 440) {
+                $("#cpu-chart").css("width", "100%");
+                $("#memory-chart").css("width", "100%");
+            }
+        });
     }
 
 })();
