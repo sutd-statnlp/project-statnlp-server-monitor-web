@@ -239,8 +239,17 @@ $.AdminBSB.navbar = {
             if ($body.hasClass('overlay-open')) { $overlay.fadeIn(); } else { $overlay.fadeOut(); }
         });
 
+        $('.m-sidenav ul li').on('click', function () {
+            $body.removeClass('overlay-open');
+            $overlay.fadeOut();
+        });
+
         //Close collapse bar on click event
         $('.nav [data-close="true"]').on('click', function () {
+            toggleNavbar();
+        });
+
+        function toggleNavbar() {
             var isVisible = $('.navbar-toggle').is(':visible');
             var $navbarCollapse = $('.navbar-collapse');
 
@@ -249,6 +258,10 @@ $.AdminBSB.navbar = {
                     $navbarCollapse.removeClass('in').removeAttr('style');
                 });
             }
+        }
+
+        $('.m-menu-item').on('click', function () {
+            toggleNavbar();
         });
     }
 }
