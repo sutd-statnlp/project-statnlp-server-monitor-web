@@ -22,5 +22,6 @@
             item.addClass('m-item-active');
             DataService.setEndpointByIpOrDomain(ipItem);
         }
+
     }
 })();

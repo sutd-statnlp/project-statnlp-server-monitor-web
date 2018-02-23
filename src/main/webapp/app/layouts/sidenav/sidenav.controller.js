@@ -32,9 +32,7 @@
                 navEle.removeClass('active');
             });
 
-            $('.nav a').on('click', function () {
-                $('.navbar-collapse.in').collapse('hide');
-            });
+           
         });
     }
 })();
