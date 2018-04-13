@@ -43,6 +43,15 @@ export default {
       $('.m-sidenav ul li').removeClass('active')
       $(this).addClass('active')
     })
+
+    let currentPath = '#' + this.$route.path
+    $('.m-sidenav ul li').each(function () {
+      let itemPath = $(this).find('a').attr('href')
+      if (currentPath === itemPath) {
+        $('.m-sidenav ul li').removeClass('active')
+        $(this).addClass('active')
+      }
+    })
   }
 }
 </script>

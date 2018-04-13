@@ -35,11 +35,11 @@
                                 <td>{{item.fanSpeed}}</td>
                                 <td>{{item.utilization}}</td>
                                 <td>{{item.temperature}}</td>
-                                <td>{{item.memory.used}} / {{item.memory.total}}</td>
+                                <td>{{item.memory.used | mib(2)}} / {{item.memory.total | mib(2)}}</td>
                                 <td>{{item.powerDraw}} / {{item.powerLimit}}</td>
                                 <td class="text-center">
-                                  <div @click="viewProcesses(item)" class="btn-group" role="group" aria-label="First group">
-                                        <button type="button" class="btn btn-primary waves-effect"> {{item.processes.length}}</button>
+                                  <div class="btn-group" role="group" aria-label="First group">
+                                        <button type="button" class="btn btn-primary waves-effect" @click="viewProcesses(item, index)" :disabled="item.processes.length == 0"> {{item.processes.length}}</button>
                                     </div>
                                 </td>
                               </tr>
@@ -54,7 +54,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            Running processes of {{chosenGpu.uuid}}
+                            Running processes of GPU {{chosenGpu.index + 1}}
                         </h2>
                     </div>
                     <div class="body table-responsive">
@@ -74,7 +74,7 @@
                                 <td>{{item.pid}}</td>
                                 <td>{{item.type}}</td>
                                 <td>{{item.process_name}}</td>
-                                <td>{{item.used_memory}}</td>
+                                <td>{{item.used_memory | mib(2)}}</td>
                               </tr>
                           </tbody>
                         </table>
@@ -112,8 +112,9 @@ export default {
         this.$store.dispatch('gpu/loadDefaultData')
       }
     },
-    viewProcesses (gpu) {
+    viewProcesses (gpu, index) {
       this.chosenGpu = gpu
+      this.chosenGpu['index'] = index
     }
   },
   computed: {

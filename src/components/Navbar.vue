@@ -12,14 +12,14 @@
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <!-- Call Search -->
-                <li>
+                <li class="animated fadeInLeft">
                     <router-link to="/apps">
                         <i class="material-icons">get_app</i>
                     </router-link>
                 </li>
                 <!-- #END# Call Search -->
                 <!-- Notifications -->
-                <li class="dropdown">
+                <li class="dropdown animated fadeInRight">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         <i class="material-icons">poll</i>
                         <span class="label-count">{{getServers.length}}</span>
@@ -56,6 +56,7 @@
 <script>
 import AlterService from '@/services/alter-service'
 import StoreService from '@/services/store-service'
+import { loadProgressBar } from 'axios-progress-bar'
 
 export default {
   name: 'Navbar',
@@ -64,7 +65,12 @@ export default {
     }
   },
   created () {
-    return this.$store.dispatch('getServers')
+    loadProgressBar({
+      showSpinner: false,
+      easing: 'ease',
+      speed: 500
+    })
+    this.$store.dispatch('getServers')
   },
   computed: {
     getServers () {

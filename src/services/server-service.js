@@ -2,6 +2,8 @@ import axios from 'axios'
 
 class ServerService {
   constructor () {
+    axios.defaults.timeout = 2000
+
     this.httpSchema = 'http://'
     this.port = ':8210'
 

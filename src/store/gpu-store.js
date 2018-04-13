@@ -21,7 +21,9 @@ export default {
   mutations: {
     getGpuInfo (state) {
       let url = ServerService.getGpuInfoEndpoint()
-      axios.get(url).then(response => {
+      axios.get(url, {
+        timeout: 4000
+      }).then(response => {
         let data = response.data.nvidia_smi_log
         state.gpu = {
           driverVersion: data.driver_version,

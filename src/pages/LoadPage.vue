@@ -48,6 +48,7 @@
 import InfoBox from '@/components/InfoBox'
 import RefreshButton from '@/components/RefreshButton'
 import AlterService from '@/services/alter-service'
+import LoadingService from '@/services/loading-service'
 
 export default {
   components: {
@@ -74,11 +75,13 @@ export default {
     },
     setAutoRefresh () {
       if (this.isAutoRefresh) {
+        LoadingService.disableLoader()
         this.interval = setInterval(function () {
           this.refresh()
         }.bind(this), 800)
       } else {
         clearInterval(this.interval)
+        LoadingService.enableLoader()
       }
     }
   },

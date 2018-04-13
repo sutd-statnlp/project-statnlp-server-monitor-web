@@ -19,6 +19,9 @@ export default {
       },
       () => {
         store.dispatch('network/getAll')
+      },
+      () => {
+        store.dispatch('gpu/getAll')
       }
     ], (err, results) => {
       console.log(err)
@@ -43,6 +46,9 @@ export default {
       },
       () => {
         store.dispatch('network/loadDefaultData')
+      },
+      () => {
+        store.dispatch('gpu/loadDefaultData')
       }
     ], (err, results) => {
       console.log(err)

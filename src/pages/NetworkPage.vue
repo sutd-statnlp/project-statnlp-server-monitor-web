@@ -6,7 +6,7 @@
                 <RefreshButton :refresh="refresh" />
             </div>
         </div>
-        <div class="row clearfix animated fadeInUp">
+        <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">

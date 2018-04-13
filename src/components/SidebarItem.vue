@@ -1,5 +1,5 @@
 <template>
-  <li :class="isActive ? 'waves-effect waves-block active' : 'waves-effect waves-block'">
+  <li class="waves-effect waves-block" :class="isActive ? 'active' : ''">
    <router-link :to="link">
         <i class="material-icons">{{icon}}</i>
         <span>{{title}}</span>
