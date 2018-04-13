@@ -24,7 +24,7 @@
               </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-              <div @click="download('https://i.diawi.com/rdnZaA')">
+              <div @click="download('https://raw.githubusercontent.com/sutd-statnlp/project-statnlp-mobile-server-monitor/master/download/ServerMonitor.apk.zip')">
                 <InfoBox icon="get_app" title="Download" value="Android" effect="hover-expand-effect"/>
               </div>
             </div>
