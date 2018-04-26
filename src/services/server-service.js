@@ -17,7 +17,7 @@ class ServerService {
       status: false
     }, {
       name: 'StatNLP 3',
-      ip: '192.168.30.231',
+      ip: '192.168.30.226',
       status: false
     }, {
       name: 'MLCluster 1',
